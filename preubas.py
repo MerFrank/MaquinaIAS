@@ -41,7 +41,7 @@ def jump_left(adress):
         print(f"Mitad izquierda extraída {bin(siguiente)}")
         print(f"Nueva dirección del acumulador {hex(acumulador)}")
     else:
-         print(f"ERROR. JUMP no ha sido ejecutado. No se pudo leer la dirección {hex(adress)}")
+        print(f"ERROR. JUMP no ha sido ejecutado. No se pudo leer la dirección {hex(adress)}")
         
 def jump_right(adress):
     global acumulador
@@ -53,7 +53,7 @@ def jump_right(adress):
         print(f"Mitad derecha extraída {bin(siguiente)}")
         print(f"Nueva dirección del acumulador {hex(acumulador)}")
     else:
-         print(f"ERROR. JUMP no ha sido ejecutado. No se pudo leer la dirección {hex(adress)}")
+        print(f"ERROR. JUMP no ha sido ejecutado. No se pudo leer la dirección {hex(adress)}")
         
 def jump_left_con(adress):
     global acumulador
@@ -68,8 +68,37 @@ def jump_left_con(adress):
         else:
             print(f"ERROR. JUMP no ha sido ejecutado. No se pudo leer la dirección {hex(adress)}")
     else:
-         print(f"El acumulador es negativo")
-         
+        print(f"El acumulador es negativo")
+
+def add_memoria(adress):
+    global acumulador
+    if adress in memoria:
+        acumulador = acumulador + memoria[adress]
+
+def add_memoria_abs(adress):
+    global acumulador
+    if adress in memoria:
+        acumulador = acumulador + memoria[adress]
+        acumulador = abs(acumulador)
+
+def sub_memoria(adress):
+    global acumulador
+    if adress in memoria:
+        acumulador = acumulador - memoria[adress]
+
+def sub_memoria_abs(adress):
+    global acumulador
+    if adress in memoria:
+        acumulador = acumulador - memoria[adress]
+        acumulador = abs(acumulador)
+
+#Funcion DIV_M(X) (Estefani)
+#nombre de la funcion 
+def DIV_M (AC, X):
+    MQ = AC / X   #se hace la division
+    AC = AC % X # se calcula el resto de la division
+    return MQ, AC 
+
 #Codigos de prueba
 if __name__ == "__main__":
     # Ejemplo: creamos una palabra de 40 bits
