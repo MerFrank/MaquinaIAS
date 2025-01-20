@@ -99,6 +99,62 @@ def DIV_M (AC, X):
     AC = AC % X # se calcula el resto de la division
     return MQ, AC 
 
+#Codigos de yes
+# Instrucción 1: LOAD MQ
+def load_mq():
+    """
+    Transfiere el contenido del registro MQ al acumulador.
+    """
+    global acumulador, MQ
+    acumulador = MQ
+    print(f"LOAD MQ ejecutado. MQ: {MQ}, acumulador: {acumulador}")
+
+# Instrucción 2: LOAD MQ, M(X)
+def load_mq_mem(address):
+    """
+    Transfiere el contenido de la posición de memoria X a MQ.
+    """
+    global MQ
+    if address in memoria:
+        MQ = memoria[address]
+        print(f"LOAD MQ, M({hex(address)}) ejecutado. MQ: {MQ}")
+    else:
+        print(f"ERROR: Dirección {hex(address)} no encontrada en memoria.")
+
+# Instrucción 3: STOR M(X)
+def stor_mem(address):
+    """
+    Transfiere el contenido del acumulador a la posición de memoria X.
+    """
+    global acumulador, memoria
+    memoria[address] = acumulador
+    print(f"STOR M({hex(address)}) ejecutado. Memoria[{hex(address)}]: {memoria[address]}")
+
+# Instrucción 4: LOAD M(X)
+def load_mem(address):
+    """
+    Transfiere el contenido de M(X) al acumulador.
+    """
+    global acumulador, memoria
+    if address in memoria:
+        acumulador = memoria[address]
+        print(f"LOAD M({hex(address)}) ejecutado. Acumulador: {acumulador}")
+    else:
+        print(f"ERROR: Dirección {hex(address)} no encontrada en memoria.")
+
+# Instrucción 5: LOAD -M(X)
+def load_neg_mem(address):
+    """
+    Transfiere el valor negativo de M(X) al acumulador.
+    """
+    global acumulador, memoria
+    if address in memoria:
+        acumulador = -memoria[address]
+        print(f"LOAD -M({hex(address)}) ejecutado. Acumulador: {acumulador}")
+    else:
+        print(f"ERROR: Dirección {hex(address)} no encontrada en memoria.")
+
+
 #Codigos de prueba
 if __name__ == "__main__":
     # Ejemplo: creamos una palabra de 40 bits
