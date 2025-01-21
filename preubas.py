@@ -99,6 +99,24 @@ def DIV_M (AC, X):
     AC = AC % X # se calcula el resto de la division
     return MQ, AC 
 
+def STOR (D) :
+    global AC
+    if D in memoria:
+        AC=memoria[D]
+        print(f"Nuevo valor del acomulador:",AC)
+    else:
+        print("Error, la direccion no existe en la memoria ")
+    #REVISAR FUNCIONES, PUEDEN ESTAR INCOMPLETAS
+def LSH (AC):
+    
+    res = AC *2# se multiplica el acomulador por 2
+    return res
+
+def RSH (AC):
+    
+    res = AC / 2# se divide el acomulador por 2
+    return res
+
 #Codigos de yes
 # Instrucción 1: LOAD MQ
 def load_mq():
