@@ -70,7 +70,59 @@ def jump_left_con(adress):
     else:
         print(f"El acumulador es negativo")
 
+#JUMP + M(X,20:39)
 
+def jump_right_con(adress):
+    global acumulador
+    if acumulador >= 0:
+        if adress in memoria:
+            palabra = memoria[adress]
+            siguiente = ext_right(palabra)
+            acumulador = siguiente
+            print(f"JUMP  + M(X,20:39) ha sido ejecutado. Palabra completa {bin(palabra)}")
+            print(f"Mitad derecha extraída {bin(siguiente)}")
+            print(f"Nueva dirección del acumulador {hex(acumulador)}")
+        else:
+            print(f"ERROR. JUMP  + M(X,20:39) no ha sido ejecutado. No se pudo leer la dirección {hex(adress)}")
+    else:
+         print(f"El acumulador es negativo")
+
+
+#ADD M(X)
+
+def add_m(adress):
+    global acumulador
+    if adress in memoria:
+        valor = memoria[adress]
+        acumulador += valor
+        print(f"ADD M(X) ha sido ejecutado. Dirección: {hex(adress)}, valor {valor}")
+        print(f"Acumulador después de la suma: {acumulador}")
+    else:
+        print(f"ERROR. ADD M(X) no ha sido ejecutado. La dirección: {hex(adress)} no existe en la memoria")
+
+#ADD |M(X)|
+
+def add_abs_m(adress):
+    global acumulador
+    if adress in memoria:
+        valor = abs(memoria[adress])  # Valor absoluto de M(X)
+        acumulador += valor
+        print(f"ADD |M(X)| ha sido ejecutado. Dirección: {hex(adress)}, valor absoluto {valor}")
+        print(f"Acumulador después de la suma: {acumulador}")
+    else:
+        print(f"ERROR. ADD |M(X)| no ha sido ejecutado. La dirección: {hex(adress)} no existe en la memoria")
+
+#SUB M(X)
+
+def sub_m(adress):
+    global acumulador
+    if adress in memoria:
+        valor = memoria[adress]
+        acumulador -= valor
+        print(f"SUB M(X) ha sido ejecutado. Dirección: {hex(adress)}, valor {valor}")
+        print(f"Acumulador después de la resta: {acumulador}")
+    else:
+        print(f"ERROR. SUB M(X) no ha sido ejecutado. La dirección: {hex(adress)} no existe en la memoria")
 
 #Funcion DIV_M(X) (Estefani)
 #nombre de la funcion 
