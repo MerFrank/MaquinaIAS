@@ -70,27 +70,7 @@ def jump_left_con(adress):
     else:
         print(f"El acumulador es negativo")
 
-def add_memoria(adress):
-    global acumulador
-    if adress in memoria:
-        acumulador = acumulador + memoria[adress]
 
-def add_memoria_abs(adress):
-    global acumulador
-    if adress in memoria:
-        acumulador = acumulador + memoria[adress]
-        acumulador = abs(acumulador)
-
-def sub_memoria(adress):
-    global acumulador
-    if adress in memoria:
-        acumulador = acumulador - memoria[adress]
-
-def sub_memoria_abs(adress):
-    global acumulador
-    if adress in memoria:
-        acumulador = acumulador - memoria[adress]
-        acumulador = abs(acumulador)
 
 #Funcion DIV_M(X) (Estefani)
 #nombre de la funcion 
@@ -171,6 +151,7 @@ def load_neg_mem(address):
         print(f"LOAD -M({hex(address)}) ejecutado. Acumulador: {acumulador}")
     else:
         print(f"ERROR: Dirección {hex(address)} no encontrada en memoria.")
+
 
 
 #Codigos de prueba
