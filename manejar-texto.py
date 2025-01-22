@@ -16,3 +16,9 @@ def dividir_instrcciones_memoria(archivo):
                 lista_instrucciones.append(linea)
             else:
                 lista_memoria.append(linea)
+    return lista_instrucciones, lista_memoria
+
+dividir_instrcciones_memoria(archivo)
+
+print(lista_instrucciones)
+print(lista_memoria)
