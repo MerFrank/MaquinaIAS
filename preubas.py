@@ -138,6 +138,14 @@ def STOR (D) :
         print(f"Nuevo valor del acomulador:",AC)
     else:
         print("Error, la direccion no existe en la memoria ")
+def STOR (I) :
+    global AC
+    if I in memoria:
+        AC=memoria[I]
+        print(f"Nuevo valor del acomulador:",AC)
+    else:
+        print("Error, la direccion no existe en la memoria ")
+
     #REVISAR FUNCIONES, PUEDEN ESTAR INCOMPLETAS
 def LSH (AC):
     
@@ -148,6 +156,8 @@ def RSH (AC):
     
     res = AC / 2# se divide el acomulador por 2
     return res
+
+
 
 #Codigos de yes
 # Instrucción 1: LOAD MQ
