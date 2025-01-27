@@ -20,5 +20,3 @@ def dividir_instrcciones_memoria(archivo):
 
 dividir_instrcciones_memoria(archivo)
 
-print(lista_instrucciones)
-print(lista_memoria)
