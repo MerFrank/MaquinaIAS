@@ -1,6 +1,41 @@
 from traductor import *
 #El acumulador y la memoria(es un diccionario para simular los espacios) deben ser globales
-acumulador = -10
+acumulador = 0
+mq = 0
+
+
+
+#Yes aquí pone tuy0 
+
+def vd_convertir_a_hexadecimal(variable):
+    try:
+        # Intentar convertir a entero para verificar si es decimal
+        numero_decimal = int(variable)
+        # Si se puede convertir, convertir a hexadecimal
+        return hex(numero_decimal)
+    except ValueError:
+        # Si no es decimal, devolver None
+        print(f"'{variable}' no es un número decimal válido.")
+        return None
+
+
+
+def vh_convertir_a_decimal(num):
+    try:
+# Intentamos convertir el número a decimal usando base 16, int(num, 16) toma el valor num y lo interpreta como un número hexadecimal el 16 es de la base que es hexadecimal, si la conversión esta bien se almacena el resultado en la variable decimal y la función devuelve ese valor.
+        decimal = int(num, 16)
+        return decimal
+    except ValueError:
+        # Si ocurre un error, es porque no es hexadecimal
+        return "Error: El número no es hexadecimal válido."
+        
+numero = input("Introduce un número hexadecimal: ")
+resultado = vh_convertir_a_decimal(numero)
+print(resultado)
+
+###
+#:) voy gracias 
+
 
 # LOAD Absoluto
 def load_abs(address):
@@ -125,35 +160,35 @@ def sub_m(adress):
 
 #Funcion DIV_M(X) (Estefani)
 #nombre de la funcion 
-def DIV_M (AC, X):
-    MQ = AC / X   #se hace la division
-    AC = AC % X # se calcula el resto de la division
-    return MQ, AC 
+def DIV_M (acumulador, X):
+    mq = acumulador / X   #se hace la division
+    acumulador = acumulador % X # se calcula el resto de la division
+    return mq, acumulador 
 
 def STOR (D) :
-    global AC
+    global acumulador
     if D in lista_memoria:
-        AC=lista_memoria[D]
-        print(f"Nuevo valor del acomulador:",AC)
+        acumulador=lista_memoria[D]
+        print(f"Nuevo valor del acomulador:",acumulador)
     else:
         print("Error, la direccion no existe en la memoria ")
 def STOR (I) :
-    global AC
+    global acumulador
     if I in lista_memoria:
-        AC=lista_memoria[I]
-        print(f"Nuevo valor del acomulador:",AC)
+        acumulador=lista_memoria[I]
+        print(f"Nuevo valor del acomulador:",acumulador)
     else:
         print("Error, la direccion no existe en la memoria ")
 
     #REVISAR FUNCIONES, PUEDEN ESTAR INCOMPLETAS
-def LSH (AC):
+def LSH (acumulador):
     
-    res = AC *2# se multiplica el acomulador por 2
+    res = acumulador *2# se multiplica el acomulador por 2
     return res
 
-def RSH (AC):
+def RSH (acumulador):
     
-    res = AC / 2# se divide el acomulador por 2
+    res = acumulador / 2# se divide el acomulador por 2
     return res
 
 
@@ -164,19 +199,19 @@ def load_mq():
     """
     Transfiere el contenido del registro MQ al acumulador.
     """
-    global acumulador, MQ
-    acumulador = MQ
-    print(f"LOAD MQ ejecutado. MQ: {MQ}, acumulador: {acumulador}")
+    global acumulador, mq
+    acumulador = mq
+    print(f"LOAD MQ ejecutado. MQ: {mq}, acumulador: {acumulador}")
 
 # Instrucción 2: LOAD MQ, M(X)
 def load_mq_mem(address):
     """
     Transfiere el contenido de la posición de memoria X a MQ.
     """
-    global MQ
+    global mq
     if address in lista_memoria:
-        MQ = lista_memoria[address]
-        print(f"LOAD MQ, M({hex(address)}) ejecutado. MQ: {MQ}")
+        mq = lista_memoria[address]
+        print(f"LOAD MQ, M({hex(address)}) ejecutado. MQ: {mq}")
     else:
         print(f"ERROR: Dirección {hex(address)} no encontrada en memoria.")
 
@@ -223,3 +258,4 @@ def mul_m(address):
         print(f"MUL M({hex(address)}) ha sido ejecutado. Valor: {valor}, Acumulador: {acumulador}")
     else:
         print(f"ERROR: Dirección {hex(address)} no encontrada en memoria.")
+        

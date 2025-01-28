@@ -2,6 +2,7 @@ from diccionario import *
 
 import re  # Importamos el módulo de expresiones regulares
 
+
 def procesar_instrucciones(lista_instrucciones, dic_intrucciones):
     for linea in lista_instrucciones:
         # Caso 1: Instrucciones con formato JUMP M(x,20:39)
