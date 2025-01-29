@@ -1,5 +1,5 @@
 from diccionario import *
-
+from lista_modificada import *
 import re  # Importamos el módulo de expresiones regulares
 
 
